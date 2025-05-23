@@ -1,41 +1,40 @@
 [versions]
 # Build Tool Versions
-agp = "8.2.0"
-kotlin = "1.9.22"
-ksp = "1.9.22-1.0.17" # Aligned with Kotlin version
+agp = "8.10.0"
+kotlin = "2.1.21"
+ksp = "2.1.21-2.0.1"
 
 # Compose Versions
-composeBom = "2024.02.02"
-composeCompiler = "1.5.8" # For Kotlin 1.9.22
+composeBom = "2025.05.01"
 
 # AndroidX Core & Lifecycle
-coreKtx = "1.12.0"
-lifecycleRuntimeKtx = "2.7.0"
-activityCompose = "1.8.2"
-navigationCompose = "2.7.7"
+coreKtx = "1.16.0"
+lifecycleRuntimeKtx = "2.9.0"
+activityCompose = "1.10.1"
+navigationCompose = "2.9.0"
 
 # Data Persistence
-room = "2.6.1" # Version for Room libraries and Room Gradle Plugin
-mmkv = "1.3.0"
+room = "2.7.1"
+mmkv = "2.2.2"
 
 # Dependency Injection
-hilt = "2.49" # Version for Hilt Android library, Hilt compiler, and Hilt Gradle Plugin
+hilt = "2.51.1"
 
 # Networking
-retrofit = "2.9.0"
+retrofit = "3.0.0"
 okhttp = "4.12.0"
-kotlinxSerializationJson = "1.6.3"
+kotlinxSerializationJson = "1.7.3"
 # Version for Jake Wharton's converter, used in [libraries]
 jakewhartonRetrofitKotlinxSerializationConverter = "1.0.0"
 
 # Firebase
-firebasePerfPlugin = "1.4.2" # Firebase Performance plugin version
-firebasePerfSdk = "20.5.2" # Firebase Performance SDK version
+firebasePerfPlugin = "1.4.2"
+firebasePerfSdk = "21.0.5"
 
 # Testing
 junit = "4.13.2"
-androidxJunit = "1.1.5"
-espressoCore = "3.5.1"
+androidxJunit = "1.2.1"
+espressoCore = "3.6.1"
 
 # Code Quality
 ktlintGradle = "11.6.1" # Ktlint Gradle plugin version
@@ -93,6 +92,7 @@ androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinCompose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" } # Problematic, but configured as requested
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" } # For @Serializable if used

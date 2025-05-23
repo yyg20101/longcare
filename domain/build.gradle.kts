@@ -1,12 +1,30 @@
-// domain/build.gradle.kts
 plugins {
-    id("org.jetbrains.kotlin.jvm")
+    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinCompose)
+}
+
+android {
+    namespace = "com.ytone.longcare.domain"
+    compileSdk = libs.versions.compileSdk.get().toInt()
+
+    defaultConfig {
+        minSdk = libs.versions.minSdk.get().toInt()
+    }
+
+    buildFeatures {
+        compose = true
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
-    // For @javax.inject.Inject annotation if Hilt is used for use case constructor injection
-    // This typically comes from dagger or hilt-core.
-    // Given libs.versions.toml, hilt-android provides javax.inject.
     implementation(libs.hilt.android)
 }

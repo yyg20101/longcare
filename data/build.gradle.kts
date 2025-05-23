@@ -1,6 +1,5 @@
-// data/build.gradle.kts
 plugins {
-    id("com.android.library")
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid) // Assuming libs.versions.toml is available
     alias(libs.plugins.ksp) // For Room if DAOs are here, or Hilt
     alias(libs.plugins.hilt)
@@ -14,11 +13,11 @@ android {
         minSdk = libs.versions.minSdk.get().toInt() // From libs.versions.toml
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 

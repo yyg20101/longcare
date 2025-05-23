@@ -1,10 +1,9 @@
-// features/home/build.gradle.kts
 plugins {
-    id("com.android.library")
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.hilt)
-    alias(libs.plugins.ksp) // For Hilt processor
-    // alias(libs.plugins.kotlinCompose) // Assuming this still causes issues, configure compose features directly
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinCompose)
 }
 
 android {
@@ -18,15 +17,12 @@ android {
     buildFeatures {
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
-    }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
@@ -36,7 +32,6 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx) // For viewModelScope
     implementation(libs.androidx.activity.compose)
 
     // Jetpack Compose BOM and libraries
