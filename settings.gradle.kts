@@ -20,4 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "longcare"
-include(":app")
+include(":app", ":data", ":domain", ":features:home")

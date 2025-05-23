@@ -9,32 +9,29 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.ytone.longcare.theme.LongcareTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import com.ytone.longcare.ui.theme.LongcareTheme // Assuming this theme exists or will be created
 
+@dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             LongcareTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                // A simple Composable content
+                Greeting("from com.ytone.longcare")
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting(name: String, modifier: Modifier = Modifier) { // Added Modifier for consistency
     Text(
         text = "Hello $name!",
-        modifier = modifier
+        modifier = modifier // Apply the modifier
     )
 }
 
@@ -42,6 +39,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     LongcareTheme {
-        Greeting("Android")
+        Greeting("from com.ytone.longcare")
     }
 }
