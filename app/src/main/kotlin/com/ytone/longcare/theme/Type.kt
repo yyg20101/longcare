@@ -1,4 +1,4 @@
-package com.ytone.longcare.ui.theme
+package com.ytone.longcare.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
