@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">LongCare</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="icon_description_example">Example icon for demonstration</string>
+    <string name="coil_image_description">Image loaded by Coil</string>
+    <string name="camera_permission_granted">Camera permission granted</string>
+    <string name="camera_permission_denied">Camera permission denied. Please grant.</string>
+    <string name="camera_permission_rationale">This app needs camera access to take pictures.</string>
+    <string name="request_camera_permission">Request Camera Permission</string>
 </resources>

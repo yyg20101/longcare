@@ -86,6 +86,13 @@ dependencies {
     // Firebase
     implementation(libs.firebase.perf)
 
+    // Image Loading
+    implementation(libs.coil.core)
+    implementation(libs.coil.compose)
+
+    // Permissions
+    implementation(libs.accompanist.permissions)
+
     // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
