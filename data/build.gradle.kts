@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid) // Assuming libs.versions.toml is available
     alias(libs.plugins.ksp) // For Room if DAOs are here, or Hilt
-    alias(libs.plugins.hilt)
+    alias(libs.plugins.dagger.hilt)
 }
 
 android {
@@ -22,8 +22,10 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
     implementation(libs.androidx.core.ktx)
-    implementation(libs.hilt.android)
+    implementation(libs.bundles.hilt)
+    ksp(libs.dagger.hilt.compiler)
     ksp(libs.hilt.compiler)
     // Add other common data layer dependencies like retrofit, room-runtime, kotlinx-serialization-json
     implementation(libs.retrofit.core) // Corrected to libs.retrofit.core from previous TOML

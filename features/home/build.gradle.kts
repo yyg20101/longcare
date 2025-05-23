@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
-    alias(libs.plugins.hilt)
+    alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlinCompose)
 }
@@ -45,6 +45,7 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
 
     // Hilt for DI
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.compiler) // Hilt KSP compiler
+    implementation(libs.bundles.hilt)
+    ksp(libs.dagger.hilt.compiler)
+    ksp(libs.hilt.compiler)
 }

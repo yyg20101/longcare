@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.kotlinCompose)
-    alias(libs.plugins.hilt)
+    alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.ksp)
     alias(libs.plugins.firebasePerf)
 }
@@ -17,7 +17,7 @@ android {
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = libs.versions.versionCode.get().toInt()
-        versionName = libs.versions.versionName.get().toString()
+        versionName = libs.versions.versionName.get()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -39,6 +39,7 @@ android {
         jvmTarget = "17"
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
 }
@@ -66,7 +67,8 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
 
     // Hilt
-    implementation(libs.hilt.android)
+    implementation(libs.bundles.hilt)
+    ksp(libs.dagger.hilt.compiler)
     ksp(libs.hilt.compiler)
 
     // Room
@@ -87,8 +89,7 @@ dependencies {
     implementation(libs.firebase.perf)
 
     // Image Loading
-    implementation(libs.coil.core)
-    implementation(libs.coil.compose)
+    implementation(libs.bundles.coil)
 
     // Permissions
     implementation(libs.accompanist.permissions)

@@ -7,26 +7,18 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.BrokenImage
-import androidx.compose.material.icons.filled.Image
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -35,38 +27,23 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
-import coil.request.ImageRequest
+import coil3.compose.AsyncImage
+import coil3.request.ImageRequest
+import coil3.request.crossfade
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionStatus
 import com.google.accompanist.permissions.rememberPermissionState
-import com.google.accompanist.permissions.shouldShowRationale
-import com.ytone.longcare.ui.theme.LongcareTheme // Assuming this theme exists or will be created
+import com.ytone.longcare.theme.LongCareTheme
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
-@OptIn(ExperimentalPermissionsApi::class) // For Accompanist Permissions
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Demonstrate Timber logging
-        Timber.d("MainActivity onCreate: Start")
-
-        // Example of logging with context
-        Timber.tag("MainActivityLifecycle").i("onCreate called")
-
-        // Example of logging an error (for demonstration)
-        try {
-            throw RuntimeException("This is a test exception to demonstrate error logging.")
-        } catch (e: Exception) {
-            Timber.e(e, "Caught an exception during onCreate (test)")
-        }
-
         setContent {
-            LongcareTheme {
+            LongCareTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     // Main content area
                     Column(
@@ -112,33 +89,8 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        Timber.d("MainActivity onCreate: End")
     }
 
-    override fun onStart() {
-        super.onStart()
-        Timber.tag("MainActivityLifecycle").i("onStart called")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Timber.tag("MainActivityLifecycle").i("onResume called")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Timber.tag("MainActivityLifecycle").i("onPause called")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Timber.tag("MainActivityLifecycle").i("onStop called")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Timber.tag("MainActivityLifecycle").i("onDestroy called")
-    }
 }
 
 @Composable
@@ -152,7 +104,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    LongcareTheme {
+    LongCareTheme {
         // Preview with a sample name
         Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(16.dp)) {
             Greeting("Coil User Preview")

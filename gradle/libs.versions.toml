@@ -18,7 +18,8 @@ room = "2.7.1"
 mmkv = "2.2.2"
 
 # Dependency Injection
-hilt = "2.51.1"
+dagger = "2.56.2"
+hilt = "1.2.0"
 
 # Networking
 retrofit = "3.0.0"
@@ -31,6 +32,10 @@ jakewhartonRetrofitKotlinxSerializationConverter = "1.0.0"
 firebasePerfPlugin = "1.4.2"
 firebasePerfSdk = "21.0.5"
 
+coil = "3.2.0"
+accompanistPermissions = "0.34.0"
+timber = "5.0.1"
+
 # Testing
 junit = "4.13.2"
 androidxJunit = "1.2.1"
@@ -41,10 +46,7 @@ ktlintGradle = "11.6.1" # Ktlint Gradle plugin version
 ktlintVersion = "0.50.0" # Ktlint rule set version for configuration block
 
 # Android SDK and App Versions
-compileSdk = "34"
-timber = "5.0.1"
-coil = "2.6.0"
-accompanistPermissions = "0.34.0"
+compileSdk = "35"
 minSdk = "24"
 targetSdk = "34"
 versionCode = "1"
@@ -74,8 +76,14 @@ room-compiler = { group = "androidx.room", name = "room-compiler", version.ref =
 mmkv = { group = "com.tencent", name = "mmkv-static", version.ref = "mmkv" }
 
 # Dependency Injection - Hilt
-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" } # For KSP
+dagger-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "dagger" }
+dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "dagger" }
+hilt-common = { group = "androidx.hilt", name = "hilt-common", version.ref = "hilt" }
+hilt-work = { group = "androidx.hilt", name = "hilt-work", version.ref = "hilt" }
+hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation", version.ref = "hilt" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt" }
+hilt-navigation-fragment = { group = "androidx.hilt", name = "hilt-navigation-fragment", version.ref = "hilt" }
+hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hilt" }
 
 # Networking
 retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
@@ -90,8 +98,12 @@ firebase-perf = { group = "com.google.firebase", name = "firebase-perf-ktx", ver
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
 
 # Image Loading
-coil-core = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
-coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+coil-core = { group = "io.coil-kt.coil3", name = "coil", version.ref = "coil" }
+coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
+coil-network-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil" }
+coil-svg = { group = "io.coil-kt.coil3", name = "coil-svg", version.ref = "coil" }
+coil-gif = { group = "io.coil-kt.coil3", name = "coil-gif", version.ref = "coil" }
+coil-video = { group = "io.coil-kt.coil3", name = "coil-video", version.ref = "coil" }
 
 # Permissions
 accompanist-permissions = { group = "com.google.accompanist", name = "accompanist-permissions", version.ref = "accompanistPermissions" }
@@ -107,10 +119,15 @@ androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinKapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlinCompose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" } # Problematic, but configured as requested
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" } # For @Serializable if used
-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" } # Hilt Gradle plugin
+dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "dagger" } # Hilt Gradle plugin
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 room = { id = "androidx.room", version.ref = "room" } # Room Gradle Plugin, uses 'room' version key from [versions]
 firebasePerf = { id = "com.google.firebase.firebase-perf", version.ref = "firebasePerfPlugin" } # Firebase Performance Gradle plugin
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintGradle" } # Ktlint Gradle plugin
+
+[bundles]
+coil = ["coil-core", "coil-compose", "coil-network-okhttp", "coil-gif", "coil-svg", "coil-video"]
+hilt = ["dagger-hilt-android", "hilt-common", "hilt-work", "hilt-navigation", "hilt-navigation-compose", "hilt-navigation-fragment"]

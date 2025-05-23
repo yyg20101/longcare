@@ -1,11 +1,13 @@
 package com.ytone.longcare.di
 
 import android.content.Context
-import coil.ImageLoader
-import coil.decode.SvgDecoder
-import coil.disk.DiskCache
-import coil.memory.MemoryCache
-import coil.util.DebugLogger
+import android.os.Build
+import coil3.ImageLoader
+import coil3.gif.AnimatedImageDecoder
+import coil3.gif.GifDecoder
+import coil3.svg.SvgDecoder
+import coil3.util.DebugLogger
+import coil3.video.VideoFrameDecoder
 import com.ytone.longcare.BuildConfig
 import dagger.Module
 import dagger.Provides
@@ -24,22 +26,14 @@ object ImageLoadingModule {
         @ApplicationContext context: Context
     ): ImageLoader {
         return ImageLoader.Builder(context)
-            .memoryCache {
-                MemoryCache.Builder(context)
-                    // Use 25% of the application's available memory.
-                    .maxSizePercent(0.25)
-                    .build()
-            }
-            .diskCache {
-                DiskCache.Builder()
-                    .directory(context.cacheDir.resolve("image_cache"))
-                    .maxSizePercent(0.02) // Use 2% of available disk space, or 512MB as in the example
-                    // .maxSizeBytes(512L * 1024 * 1024) // 512MB
-                    .build()
-            }
             .components {
-                // Add SVG support if needed
                 add(SvgDecoder.Factory())
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    add(AnimatedImageDecoder.Factory())
+                } else {
+                    add(GifDecoder.Factory())
+                }
+                add(VideoFrameDecoder.Factory())
             }
             // Add a logger for debug builds
             .apply {
@@ -47,7 +41,6 @@ object ImageLoadingModule {
                     logger(DebugLogger())
                 }
             }
-            .respectCacheHeaders(false) // Optional: Useful for images that change frequently but have the same URL
             .build()
     }
 }
