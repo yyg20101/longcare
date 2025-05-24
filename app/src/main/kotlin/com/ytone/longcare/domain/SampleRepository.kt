@@ -1,4 +1,4 @@
-package com.ytone.longcare.domain.repository
+package com.ytone.longcare.domain
 
 interface SampleRepository {
     // Define methods for data operations
