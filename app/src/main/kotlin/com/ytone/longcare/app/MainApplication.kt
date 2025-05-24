@@ -1,15 +1,25 @@
-package com.ytone.longcare
+package com.ytone.longcare.app
 
 import android.app.Application
+import coil3.ImageLoader
+import coil3.PlatformContext
+import coil3.SingletonImageLoader
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import javax.inject.Inject
+import javax.inject.Provider
 
 @HiltAndroidApp
-class MainApplication : Application() {
+class MainApplication : Application(), SingletonImageLoader.Factory {
+
+    // 如果你想让Coil全局使用Hilt提供的ImageLoader，
+    // 你的Application类需要实现ImageLoaderFactory
+    @Inject
+    lateinit var imageLoaderProvider: Provider<ImageLoader>
 
     private val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
@@ -49,6 +59,8 @@ class MainApplication : Application() {
             // exitProcess(1)
         }
     }
+
+    override fun newImageLoader(context: PlatformContext): ImageLoader = imageLoaderProvider.get()
 
     // Example of a custom crash handling function
     // private fun handleCrash(throwable: Throwable) {

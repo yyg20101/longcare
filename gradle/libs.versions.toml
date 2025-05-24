@@ -12,10 +12,17 @@ coreKtx = "1.16.0"
 lifecycleRuntimeKtx = "2.9.0"
 activityCompose = "1.10.1"
 navigationCompose = "2.9.0"
+appcompat = "1.7.0"
 
 # Data Persistence
 room = "2.7.1"
 mmkv = "2.2.2"
+
+# Work
+work = "2.10.1"
+
+# Window
+window = "1.4.0"
 
 # Dependency Injection
 dagger = "2.56.2"
@@ -24,9 +31,8 @@ hilt = "1.2.0"
 # Networking
 retrofit = "3.0.0"
 okhttp = "4.12.0"
-kotlinxSerializationJson = "1.7.3"
-# Version for Jake Wharton's converter, used in [libraries]
-jakewhartonRetrofitKotlinxSerializationConverter = "1.0.0"
+kotlinxSerializationJson = "1.8.1"
+kotlinxDatetime = "0.6.2"
 
 # Firebase
 firebasePerfPlugin = "1.4.2"
@@ -55,6 +61,8 @@ versionName = "1.0"
 [libraries]
 # AndroidX Core & Lifecycle
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-appcompat-resources = { group = "androidx.appcompat", name = "appcompat-resources", version.ref = "appcompat" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
@@ -72,6 +80,12 @@ room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" } # For KSP
 
+# Work
+work-runtime-ktx = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "work" }
+
+# window
+window = { group = "androidx.window", name = "window", version.ref = "window" }
+
 # Data Persistence - MMKV
 mmkv = { group = "com.tencent", name = "mmkv-static", version.ref = "mmkv" }
 
@@ -87,9 +101,11 @@ hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref =
 
 # Networking
 retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
-retrofit-converter-kotlinx-serialization = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "jakewhartonRetrofitKotlinxSerializationConverter" }
+retrofit-converter-kotlinx-serialization = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "retrofit" }
 okhttp-core = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" } # OkHttp itself
+okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" } # OkHttp itself
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
 
 # Firebase Performance Monitoring
 firebase-perf = { group = "com.google.firebase", name = "firebase-perf-ktx", version.ref = "firebasePerfSdk" }

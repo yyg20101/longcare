@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.ksp)
     alias(libs.plugins.firebasePerf)
+    alias(libs.plugins.room)
 }
 
 android {
@@ -20,6 +21,12 @@ android {
         versionName = libs.versions.versionName.get()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "PUBLIC_KEY", "\"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAk45Er/DSjJwRNhReRT+4lINV6GanR3FwNutADNBwVoNQgY33bM/adLN5ZDmb8CwCeRJ4iBdcIX0co+2cm169HSHtJvOHUm864UbT63BrxKtnJCR+GkmsB3dj7YMwDbYArg7ymGP3EhWsiqMPdnR15+4LYIfK3l74nOZqPIPp8XkUKbbvJeieyslBIVSux2eytUGQjY8EPTE7nOHbAh8boWhiekFKevmx24dQBLoOrKrpTIv4pNiFSPxWCdBayCXjyr3Vq6Eg+vEDYN1+sxXWAj4bo/91TIbGQzdPCcCiZUQ1d7EgBp1JJKAsTTzkd+CusSTVpmmz/uVwjOaEHNzqWwIDAQAB\"")
+    }
+
+    room {
+        schemaDirectory("$projectDir/schemas")
     }
 
     buildTypes {
@@ -29,6 +36,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "BASE_URL", "\"https://api.qianyuwl168.cn/\"") // 生产环境 URL
+        }
+        debug {
+            isDebuggable = true
+            applicationIdSuffix = ".debug" // 可选，给debug版本一个不同的包名后缀
+            buildConfigField("String", "BASE_URL", "\"https://api.qianyuwl168.cn/\"") // 测试环境 URL
         }
     }
     compileOptions {
@@ -48,6 +61,8 @@ dependencies {
 
     // Core & Lifecycle
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.appcompat.resources)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
 
@@ -76,10 +91,17 @@ dependencies {
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.converter.kotlinx.serialization)
     implementation(libs.okhttp.core)
+    implementation(libs.okhttp.logging.interceptor)
     implementation(libs.kotlinx.serialization.json)
 
     // Data Storage
     implementation(libs.mmkv)
+
+    // Work
+    implementation(libs.work.runtime.ktx)
+
+    // Window
+    implementation(libs.window)
 
     // Firebase
     implementation(libs.firebase.perf)
@@ -89,6 +111,9 @@ dependencies {
 
     // Permissions
     implementation(libs.accompanist.permissions)
+
+    // kotlinx datetime
+    implementation(libs.kotlinx.datetime)
 
     // Testing
     testImplementation(libs.junit)
