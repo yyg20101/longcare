@@ -24,8 +24,7 @@ wire {
 val appCompileSdkVersion: Int by rootProject.extra
 val appTargetSdkVersion: Int by rootProject.extra
 val appMinSdkVersion: Int by rootProject.extra
-val appJavaVersion: JavaVersion by rootProject.extra
-val appKotlinJvmTarget: String by rootProject.extra
+val appJdkVersion: Int by rootProject.extra
 val appVersionCode: Int by rootProject.extra
 val appVersionName: String by rootProject.extra
 
@@ -97,12 +96,9 @@ android {
             buildConfigField("String", "TX_Secret", "\"1i5W9gEJsk7rLeBTrWhwE3M1V2qkAwXsgwwHuRLFHUSXbVx3HO3EeN6uupRCvMto\"")
         }
     }
-    compileOptions {
-        sourceCompatibility = appJavaVersion
-        targetCompatibility = appJavaVersion
-    }
-    kotlinOptions {
-        jvmTarget = appKotlinJvmTarget
+    kotlin {
+        // 这里直接设置 jvmToolchain 为 21
+        jvmToolchain(appJdkVersion)
     }
     buildFeatures {
         buildConfig = true
