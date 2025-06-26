@@ -33,7 +33,7 @@ android {
     compileSdk = appCompileSdkVersion
 
     signingConfigs {
-        create("config") {
+        create("release") {
             keyAlias = "longcare"
             keyPassword = "longcare^&*()"
             storeFile = file("../keystore.jks")
@@ -59,8 +59,7 @@ android {
             "PUBLIC_KEY",
             "\"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAk45Er/DSjJwRNhReRT+4lINV6GanR3FwNutADNBwVoNQgY33bM/adLN5ZDmb8CwCeRJ4iBdcIX0co+2cm169HSHtJvOHUm864UbT63BrxKtnJCR+GkmsB3dj7YMwDbYArg7ymGP3EhWsiqMPdnR15+4LYIfK3l74nOZqPIPp8XkUKbbvJeieyslBIVSux2eytUGQjY8EPTE7nOHbAh8boWhiekFKevmx24dQBLoOrKrpTIv4pNiFSPxWCdBayCXjyr3Vq6Eg+vEDYN1+sxXWAj4bo/91TIbGQzdPCcCiZUQ1d7EgBp1JJKAsTTzkd+CusSTVpmmz/uVwjOaEHNzqWwIDAQAB\"",
         )
-        signingConfig = signingConfigs.getByName("config")
-        
+
         ndk {
             abiFilters += listOf("arm64-v8a")
         }
@@ -86,6 +85,7 @@ android {
             buildConfigField("boolean", "USE_MOCK_DATA", "false")
             buildConfigField("String", "TX_ID", "\"IDAQUGBU\"")
             buildConfigField("String", "TX_Secret", "\"yLwfGODHYWHzIGaSalASEqCSQhHztlb2373GS8h91WKWLrRaT8KYU1jCXQvpaCOi\"")
+            signingConfig = signingConfigs.getByName("release")
         }
 
         debug {
@@ -94,6 +94,7 @@ android {
             buildConfigField("boolean", "USE_MOCK_DATA", "true")
             buildConfigField("String", "TX_ID", "\"TIDAvPAD\"")
             buildConfigField("String", "TX_Secret", "\"1i5W9gEJsk7rLeBTrWhwE3M1V2qkAwXsgwwHuRLFHUSXbVx3HO3EeN6uupRCvMto\"")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     kotlin {
