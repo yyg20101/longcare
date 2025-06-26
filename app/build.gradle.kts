@@ -85,6 +85,7 @@ android {
             buildConfigField("boolean", "USE_MOCK_DATA", "false")
             buildConfigField("String", "TX_ID", "\"IDAQUGBU\"")
             buildConfigField("String", "TX_Secret", "\"yLwfGODHYWHzIGaSalASEqCSQhHztlb2373GS8h91WKWLrRaT8KYU1jCXQvpaCOi\"")
+            buildConfigField("String", "TX_Licence", "\"RXQhJ1Xeasx2IDGL9ZvcyBHAwFrAITJ9Df1qWCo2LUvhCrEtcr/HmR59tlp7ApFfA0ZUtkVwsQuQNBXZ0H9Hvj9RpKgwFLb+kU4rJvTvWs4uQQRCwQ3v2Je2Mc4aQv959zDjkwPmK45ktV2osGHd9pgEQfpBPxlYUojFnidmddAG+a1KYXb+VFwbvOk4jvXH6hvMC8z+55+Gk4EJq0nc794au/vkaJZNhoLvMBypJWyK/KfMEcK0wvjnNNxkk7BmIiA1wk7mnD07NXN7nSzjuxj+gtr8T3soVe9RxPiGflW+znf5dvDu/+GYDXTM2SGI+2sMtwwusaTAyCo7MywDEQ==\"")
             signingConfig = signingConfigs.getByName("release")
         }
 
@@ -94,6 +95,7 @@ android {
             buildConfigField("boolean", "USE_MOCK_DATA", "true")
             buildConfigField("String", "TX_ID", "\"TIDAvPAD\"")
             buildConfigField("String", "TX_Secret", "\"1i5W9gEJsk7rLeBTrWhwE3M1V2qkAwXsgwwHuRLFHUSXbVx3HO3EeN6uupRCvMto\"")
+            buildConfigField("String", "TX_Licence", "\"iZaLlqkuN6OPIJz0B9bX6MpZwgEdJCKg3EAK9WVwCskqb9P/rphZDww+MoPBgOFxIvrBDg8lD6jcauSUoV078jLq11s7eKOB4fin1sVk9zHEBej92cfLgydm4Dl/9cp0kSSskBoQRJiBJwjpg8mhjp90fM2M9GmyleuvvS1XRlkG+a1KYXb+VFwbvOk4jvXH6hvMC8z+55+Gk4EJq0nc794au/vkaJZNhoLvMBypJWyK/KfMEcK0wvjnNNxkk7BmIiA1wk7mnD07NXN7nSzjuxj+gtr8T3soVe9RxPiGflW+znf5dvDu/+GYDXTM2SGI+2sMtwwusaTAyCo7MywDEQ==\"")
             signingConfig = signingConfigs.getByName("release")
         }
     }
@@ -213,6 +215,9 @@ dependencies {
     // 腾讯人脸
     implementation(files("libs/WbCloudFaceLiveSdk-will-v6.6.3-8e4718fc.aar"))
     implementation(files("libs/WbCloudNormal-v5.1.10-4e3e198.aar"))
+
+    // 腾讯云COS
+    implementation(libs.tencent.cos.android)
 
     // Testing
     testImplementation(libs.junit)
